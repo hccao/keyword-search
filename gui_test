@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import Tkinter
+import tkFileDialog
+
+
+top = Tkinter.Tk()
+top.title(u'文件内容检索')
+top.minsize(500, 200)
+top.maxsize(800, 600)
+
+
+lbl1 = Tkinter.StringVar()
+label1 = Tkinter.Label(top, textvariable=lbl1, relief=Tkinter.FLAT).place(x=10, y=15)
+lbl1.set(u"选择检索路径：")
+
+lbl2 = Tkinter.StringVar()
+label2 = Tkinter.Label(top, textvariable=lbl2, relief=Tkinter.FLAT).place(x=100, y=15)
+
+
+def choose_path():
+    file_path = tkFileDialog.askdirectory()
+    sub_path = file_path[:25]
+    lbl2.set(u'%s...' % sub_path)
+
+btn1 = Tkinter.Button(top, text=u"选择...", command=choose_path).place(x=420, y=10)
+
+
+
+top.mainloop()
