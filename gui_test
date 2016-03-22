@@ -33,6 +33,7 @@ def choose_path():
 
 def start_searching():
     file_path = text1.get(1.0, u"end-1c")  # get the content of Text
+    # text1.get(1.0, Tkinter.END)   这样获取的内容会多出一个空行
     print file_path
     if file_path == '':
         tkMessageBox.showinfo(u"提示", u"请选择检索的文件路径")
