@@ -17,23 +17,34 @@ label1 = Tkinter.Label(top, textvariable=lbl1, relief=Tkinter.FLAT).place(x=10, 
 lbl1.set(u"选择检索路径：")
 
 lbl2 = Tkinter.StringVar()
-label2 = Tkinter.Label(top, textvariable=lbl2, relief=Tkinter.FLAT, wraplength=250,
-                       justify="left").place(x=100, y=15, width=250)
+label2 = Tkinter.Label(top, textvariable=lbl2, relief=Tkinter.FLAT).place(x=10, y=65)
+lbl2.set(u"检索关键字：")
 
+text1 = Tkinter.Text(top, relief=Tkinter.SOLID)
+text1.place(x=100, y=17, width=310, height=20)
 
-file_path = ''
+text2 = Tkinter.Text(top, relief=Tkinter.SOLID)
+text2.place(x=100, y=67, width=310, height=20)
+
 def choose_path():
-    global file_path
     file_path = tkFileDialog.askdirectory()
-    lbl2.set(file_path)
+    text1.delete("1.0", Tkinter.END)  # delete the content of Text
+    text1.insert(Tkinter.INSERT, file_path)
 
 def start_searching():
+    file_path = text1.get(1.0, "end-1c")  # get the content of Text
+    print file_path
     if file_path == '':
-        tkMessageBox.showinfo(u"提示", u"请选择检索的文件路径")
+        tkMessageBox.showinfo("提示", "请选择检索的文件路径")
+    else:
+        keyword = text2.get(1.0, 'end-1c')
+        if keyword == '':
+            tkMessageBox.showinfo("提示", "请输入要检索的关键字")
 
-btn1 = Tkinter.Button(top, text=u"选择...", command=choose_path).place(x=360, y=10)
-btn2 = Tkinter.Button(top, text=u"开始检索", command=start_searching).place(x=420, y=10)
+btn1 = Tkinter.Button(top, text=u"  选  择  ", command=choose_path).place(x=420, y=10)
+btn2 = Tkinter.Button(top, text=u"开始检索", command=start_searching).place(x=420, y=60)
 
 
 top.mainloop()
+
 
