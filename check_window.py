@@ -32,9 +32,9 @@ text3 = Tkinter.Text(top, relief=Tkinter.SOLID)
 text3.place(x=100, y=107, width=310, height=260)
 
 def choose_path():
-    file_path = tkFileDialog.askdirectory()
+    path = tkFileDialog.askdirectory()
     text1.delete(u"1.0", Tkinter.END)  # delete the content of Text
-    text1.insert(Tkinter.INSERT, file_path)
+    text1.insert(Tkinter.INSERT, path)
 
 def start_searching():
     global file_path
