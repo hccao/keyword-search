@@ -4,6 +4,7 @@
 import Tkinter
 import tkFileDialog
 import tkMessageBox
+import file_scan
 
 
 top = Tkinter.Tk()
@@ -41,6 +42,8 @@ def start_searching():
         keyword = text2.get(1.0, u'end-1c')
         if keyword == '':
             tkMessageBox.showinfo(u"提示", u"请输入要检索的关键字")
+    included_files = file_scan.keyword_check(file_path, keyword)
+    print '\r\n'.join(included_files)
 
 btn1 = Tkinter.Button(top, text=u"  选  择  ", command=choose_path).place(x=420, y=10)
 btn2 = Tkinter.Button(top, text=u"开始检索", command=start_searching).place(x=420, y=60)
