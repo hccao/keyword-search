@@ -26,7 +26,7 @@ def scan_files(directory, prefix=None, postfix=None):
 def read_text(file_name, keyword):
     with open(file_name) as fn:
         data = fn.readlines()
-        pattern = re.compile(keyword)
+        pattern = re.compile(keyword.encode('utf-8'))
         for line in data:
             line_word = line.decode('gbk', 'ignore').encode('utf-8')
             if re.search(pattern, line_word):
